@@ -4,12 +4,10 @@ const input = fs.readFileSync("./2023/day3.txt", "utf-8");
 const arr = input
     .trim()
     .split("\n")
-    .map((line) => [".", ...line.trim().split(""), "."]); // Add '.' on left and right of each line
+    .map((line) => [".", ...line.trim().split(""), "."]);
 
-// Create a row of '.' with the length of any inner array (e.g., arr[0].length)
 const paddingRow = Array(arr[0].length).fill(".");
 
-// Add paddingRow to the top and bottom of the array
 arr.unshift(paddingRow);
 arr.push(paddingRow);
 
@@ -26,17 +24,14 @@ function findNumbers(arr) {
         while (col < arr[row].length) {
             let numberStr = "";
 
-            // Check if the character is a digit
             while (col < arr[row].length && arr[row][col] >= "0" && arr[row][col] <= "9") {
                 numberStr += arr[row][col];
                 col++;
             }
 
             if (numberStr.length > 0) {
-                // Convert the string of digits to an integer
                 let value = parseInt(numberStr, 10);
 
-                // Create the number object
                 numbers.push({
                     value: value,
                     row: row,
@@ -68,10 +63,8 @@ function check(number, arr) {
     return true;
 }
 
-// Filter out numbers that don’t pass the `check` function
 numbers = numbers.filter((number) => !check(number, arr));
 
-// Calculate sum
 for (let i = 0; i < numbers.length; i++) {
     sum += numbers[i].value;
 }

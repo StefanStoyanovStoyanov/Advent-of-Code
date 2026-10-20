@@ -12,9 +12,6 @@ function checkWinning(parts) {
         .split(/\s+/)
         .map(Number)
         .filter((num) => num !== 0);
-    //console.log(numbers);
-    //console.log(winning);
-
     const correctGuesses = winning.filter((winning) => numbers.includes(winning)).length;
 
     return correctGuesses;
@@ -30,8 +27,6 @@ for (let i = 0; i < lines.length; i++) {
     const lineWithoutCardNumber = line.slice(cardNumberIndex + 1).trim();
 
     const parts = lineWithoutCardNumber.split("|");
-    //console.log(parts);
-
     let matches = checkWinning(parts);
 
     for (let j = i + 1; j < i + matches + 1; j++) {

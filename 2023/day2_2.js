@@ -42,11 +42,7 @@ for (let i = 0; i < lines.length; i++) {
         maxBlue = 0;
 
     for (const part of parts) {
-        //console.log(part);
-
         ({ redCubes, greenCubes, blueCubes } = calculateCubes(part));
-
-        //console.log(redCubes, greenCubes, blueCubes);
 
         if (maxRed < redCubes) maxRed = redCubes;
         if (maxGreen < greenCubes) maxGreen = greenCubes;
